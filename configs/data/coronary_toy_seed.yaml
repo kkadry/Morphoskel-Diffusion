@@ -1,0 +1,4 @@
+_target_: src.data.datamodules.AnatomicSeedDataModule
+
+seed_folder: data/seeds/
+seed_name: toy_labelmap.pth

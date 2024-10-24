@@ -1,0 +1,4 @@
+# @package _global_
+defaults:
+  - /anatomy/coronary_toy_defaults
+  - _self_

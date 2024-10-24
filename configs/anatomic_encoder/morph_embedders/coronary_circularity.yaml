@@ -1,0 +1,15 @@
+defaults:
+  - morph_embedding_defaults@circularity
+  - _self_
+
+circularity:
+  _target_: src.conditioning.morph_embedders.CircularityEmbedder2D
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Seq2SeqEmbedder
+  channels: [1,2]
+  emb_axis: ${.tensor_embedder.emb_axis}
+  logging:
+    dim_tags: ['n','emb_axis']
+    attributes:
+      metric_name: "circularity"
+      metric_dim: 2

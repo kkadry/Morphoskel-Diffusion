@@ -1,0 +1,2 @@
+mask_shape: [32,32,32]
+replace: True

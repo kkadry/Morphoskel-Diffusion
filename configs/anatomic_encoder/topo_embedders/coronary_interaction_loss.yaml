@@ -1,0 +1,20 @@
+defaults:
+  - topo_embedding_defaults@interaction_loss
+  - _self_
+
+interaction_loss:
+  _target_: src.conditioning.topo_embedders.TopologicalInteractionLoss2D
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.IdentityEmbedder
+  channels: [1]
+  emb_axis: 2
+  dim: 2 #Dim of topo loss kernel
+  connectivity: 4
+  inclusion: [[2,3],[1,3]]
+  exclusion: [[1,2],[0,1]]
+  min_thick: 1
+  logging:
+    attributes:
+      metric_name: "interaction2DLoss"
+      metric_dim: 1
+    dim_tags: ['n']

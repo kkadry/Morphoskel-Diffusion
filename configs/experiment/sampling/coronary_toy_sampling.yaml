@@ -1,0 +1,23 @@
+# @package _global_
+defaults:
+  - /anatomy/coronary_toy_defaults
+  - _self_
+  
+sampling:
+  batch_size: 1
+  k_steps: 50
+  n_samples: 8
+  decode_bsz: 1
+  psi:
+  loader: train #options are train, val
+  
+wandb:
+  project: Sampling_Coronary_Toy
+  mode: disabled #Options are none or disabled
+  #group: debug_saving
+  
+    
+override: ${hydra:overrides}
+model_type: sampler_diffusion
+
+

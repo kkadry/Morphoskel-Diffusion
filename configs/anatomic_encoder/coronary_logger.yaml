@@ -1,0 +1,19 @@
+# @package logger
+defaults:
+- encoder_default
+
+- morph_embedders@morph_encoder.emb_models:
+  - coronary_area
+  - coronary_thickness
+  - coronary_circularity
+  - coronary_centroid
+  - coronary_arclength
+  - coronary_volume
+  
+- skel_embedders@skel_encoder.emb_models:
+  - coronary_hard_skel
+  - coronary_soft_skel
+
+- topo_embedders@topo_encoder.emb_models:
+  - coronary_components
+

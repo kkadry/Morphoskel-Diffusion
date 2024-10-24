@@ -1,0 +1,13 @@
+defaults:
+  - topo_embedding_defaults@components
+  - _self_
+
+components:
+  _target_: src.conditioning.topo_embedders.ComponentEmbedder
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Scalar2VoxelEmbedder
+  channels: [1,2]
+  logging:
+    attributes:
+      metric_name: "components"
+      metric_dim: 1

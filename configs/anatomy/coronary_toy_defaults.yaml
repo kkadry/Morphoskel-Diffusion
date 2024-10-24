@@ -1,0 +1,42 @@
+# @package _global_
+defaults:
+  - /data: coronary_toy_data
+
+  - /autoencoder: coronary_autoencoder
+  - /diffusion: coronary_diffusion
+  
+  - /anatomic_encoder:
+    - coronary_conditioner
+    - coronary_logger
+    - coronary_regressor
+  
+  - /sampling: coronary_sampling
+  - /mask: coronary_mask_null
+  - /guidance: coronary_identity_guidance
+  
+real_metrics_path: data/real/coronary_log_toy_val.pth
+
+diffusion_checkpoint:
+  folder: checkpoints/Diffusion/
+  path: diffusion_toy_ckpt_pretrained.pth
+  path_uncond: 
+  path_save: diffusion_toy_ckpt.pth
+
+autoencoder_checkpoint:
+  folder: checkpoints/VAE/
+  path: VAE_toy_ckpt_pretrained.pth
+  path_save: VAE_toy_ckpt.pth
+
+regressor_checkpoint:
+  folder: checkpoints/Regressor/
+  path: regressor_toy_ckpt_pretrained.pth
+  path_save: regressor_toy_ckpt.pth
+
+anatomy: #Anatomy specific overloads for the encoders
+  tensor_embedder:  
+    emb_vox_shape: [32,32,32]
+    emb_seq_len: 128
+    emb_vec_shape: 128
+    emb_axis: 2
+  logging:
+    tissue_keys: [background, lumen, calc, vessel]

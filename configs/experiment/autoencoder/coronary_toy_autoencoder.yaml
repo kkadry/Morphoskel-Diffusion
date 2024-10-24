@@ -1,0 +1,34 @@
+# @package _global_
+defaults:
+  - /anatomy/coronary_toy_defaults
+  - /anatomic_encoder@regressor: coronary_regressor_topo_loss
+  - _self_
+_target_: src.models.lightning_models.AutoencoderEngine
+
+data:
+  batch_size: 1
+  
+autoencoder_checkpoint:
+    path: 
+wandb:
+  project: VAE_Toy_Coronary
+  mode: disabled #Options are none or disabled
+  group: debug
+
+
+training: 
+  n_epochs: 80
+  lr: 1e-5
+  gamma: 1
+  kl_weight: 1e-6
+  topo_int_weight: 1e-5
+
+lightning:
+  strategy: ddp_find_unused_parameters_true
+  devices: 1
+  precision: 16-mixed
+  overfit_batches: 0.0
+  limit_train_batches: 
+  limit_val_batches: 10
+  enable_checkpointing: False
+

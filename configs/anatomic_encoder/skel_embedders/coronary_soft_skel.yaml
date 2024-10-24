@@ -1,0 +1,18 @@
+defaults:
+  - skel_embedding_defaults@soft_skel
+  - _self_
+
+soft_skel:
+  _target_: src.conditioning.skel_embedders.SoftSkelEmbedder
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Voxel2VoxelEmbedder
+    blur_kernel_size: 3
+    sigma_skel: 1.0
+  channels: [1]
+  label_shape: [128,128,128]
+  soft_skel_iterations: 20
+  logging:
+    dim_tags: ['n','x','y','z']
+    attributes:
+      metric_name: "soft_skel"
+      metric_dim: 3

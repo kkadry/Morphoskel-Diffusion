@@ -1,0 +1,15 @@
+defaults:
+  - morph_embedding_defaults@thickness
+  - _self_
+
+thickness:
+  _target_: src.conditioning.morph_embedders.ThicknessEmbedder2D
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Seq2SeqEmbedder
+  channels: [2]
+  emb_axis: ${.tensor_embedder.emb_axis}
+  logging:
+    attributes:
+      metric_name: "thickness"
+      metric_dim: 2
+    dim_tags: ['n','emb_axis']

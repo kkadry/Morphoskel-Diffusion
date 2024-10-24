@@ -1,0 +1,9 @@
+# @package regressor
+defaults:
+- encoder_default
+
+- morph_embedders@morph_encoder.emb_models:
+  - coronary_morph_neural
+  
+- skel_embedders@skel_encoder.emb_models:
+  - coronary_skel_neural

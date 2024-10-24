@@ -1,0 +1,39 @@
+defaults:
+  - skel_embedding_defaults@neural_skel
+  - _self_
+
+neural_skel:
+  training:
+    is_trainable: True
+  _target_: src.conditioning.skel_embedders.NeuralSkelEmbedder
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Voxel2BlurredVoxelEmbedder
+    blur_kernel_size: 3
+    sigma_skel: 1
+    label_shape: [128,128,128]
+    label_sigma: 1
+  channels: [1]
+
+  label_sigma: 1.0
+  label_shape: ${.tensor_embedder.label_shape}
+  emb_vox_shape: ${.tensor_embedder.emb_vox_shape}
+  blur_kernel_size: ${.tensor_embedder.blur_kernel_size}
+  unet_params:
+    spatial_dims: 3
+    blocks_down: [1, 2, 2, 4]
+    blocks_up: [1, 1, 1]
+    init_filters: 16 
+    in_channels: 4
+    out_channels: 1
+    dropout_prob: 0.0
+  sigma_kernel_size: 3
+  sigma_skel: 1
+  maxpool_kernel_size: 4
+  maxpool_stride: 4
+  blur: True
+
+  logging:
+    attributes:
+      metric_name: "neural_skel"
+      metric_dim: 3
+    dim_tags: ['n','x','y','z']

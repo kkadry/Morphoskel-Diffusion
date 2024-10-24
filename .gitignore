@@ -1,0 +1,32 @@
+*nii.gz
+*.pth
+*.csv
+*.tar
+baselines/
+data/seeds/*
+data/real/*
+checkpoints/Diffusion/*
+checkpoints/VAE/*
+checkpoints/Regressor/*
+debug/
+*debug*
+*.vscode
+*.pyc
+*.pyo
+artifacts/
+benchmarks/
+Morph_Data/
+Visualization/
+wandb/
+Old_Files/
+requirements/
+outputs/
+lightning_logs
+multirun/
+*hidden*
+*cardiac*
+slurm_sub.slurm
+!*.gitkeep
+# !*toy_labelmap.pth
+# !*precomputed*
+# !*pretrained*

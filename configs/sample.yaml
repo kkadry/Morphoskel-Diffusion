@@ -1,0 +1,30 @@
+defaults:
+  - experiment: default
+  # - experiment: sampling/coronary_toy_sampling
+  # - override data: coronary_toy_seed
+  # - override mask: coronary_mask_tissue
+  # - override guidance: coronary_dps_morphoskel_NN
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled  
+  - _self_
+
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .
+  
+_target_: src.models.lightning_models.DiffusionSamplerEngine
+data:
+  batch_size: ${sampling.batch_size}
+
+lightning:
+  strategy: auto 
+  devices: 1
+  precision: 16-mixed
+  limit_predict_batches: 1
+  enable_checkpointing: False
+
+metrics_folder: results
+metrics_fname: sampling_metrics_toy
+metrics_path: ${metrics_folder}/${metrics_fname}.pth
+

@@ -1,0 +1,7 @@
+defaults:
+  - experiment: sampling/coronary_toy_sampling
+  - _self_
+  
+_target_: src.models.lightning_models.DiffusionSamplerEngine
+real_metrics_fname: 'coronary_log_toy'
+real_metrics_folder: data/real/

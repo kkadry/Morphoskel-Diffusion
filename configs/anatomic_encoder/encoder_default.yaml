@@ -1,0 +1,18 @@
+defaults:
+  - common_embedders@morph_encoder.emb_models:
+    - null_embedder
+  - common_embedders@skel_encoder.emb_models:
+    - null_embedder
+  - common_embedders@topo_encoder.emb_models:
+    - null_embedder
+
+_target_: src.conditioning.encoders.AnatomicEncoder
+morph_encoder:
+  _target_: src.conditioning.encoders.MorphologicalEncoder
+skel_encoder:
+  _target_: src.conditioning.encoders.SkeletalEncoder
+topo_encoder:
+  _target_: src.conditioning.encoders.TopologicalEncoder
+
+
+

@@ -1,0 +1,19 @@
+defaults:
+  - _self_
+
+tensor_embedder:
+  emb_vox_shape: ${anatomy.tensor_embedder.emb_vox_shape}
+  emb_seq_len: ${anatomy.tensor_embedder.emb_seq_len}
+  emb_vec_shape: ${anatomy.tensor_embedder.emb_vec_shape}
+  emb_axis: ${anatomy.tensor_embedder.emb_axis}
+
+logging:
+  attributes:
+    metric_type: skel
+  dim_tags: ['n','skel_points','xyz']
+  tissue_keys: ${anatomy.logging.tissue_keys}
+
+training:
+  is_trainable: false
+  input_key: x
+  ucg_rate: 0.0

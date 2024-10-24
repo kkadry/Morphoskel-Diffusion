@@ -1,0 +1,15 @@
+defaults:
+  - morph_embedding_defaults@arclength
+  - _self_
+
+arclength:
+  _target_: src.conditioning.morph_embedders.ArcLengthEmbedder2D
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Seq2SeqEmbedder
+  channels: [2]
+  emb_axis: ${.tensor_embedder.emb_axis}
+  logging:
+    attributes:
+      metric_name: "arclength"
+      metric_dim: 2
+    dim_tags: ['n','emb_axis']

@@ -1,0 +1,9 @@
+# @package conditioner
+defaults:
+- encoder_default
+
+- morph_embedders@morph_encoder.emb_models:
+  - coronary_area
+  
+- skel_embedders@skel_encoder.emb_models:
+  - coronary_hard_skel

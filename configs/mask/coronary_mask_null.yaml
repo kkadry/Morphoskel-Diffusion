@@ -1,0 +1,4 @@
+defaults:
+  - coronary_mask_default
+_target_: src.conditioning.mask_embedders.NullMask
+replace: False

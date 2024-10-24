@@ -1,0 +1,2 @@
+_target_: src.conditioning.guidance.CGMorphoSkelGuidance
+weight: 5

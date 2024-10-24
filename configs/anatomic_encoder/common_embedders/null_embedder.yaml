@@ -1,0 +1,11 @@
+empty:
+  training:
+    is_trainable: false
+    input_key: x
+    ucg_rate: 0.0
+
+  _target_: src.conditioning.encoders.NullEmbedder
+  logging:
+    attributes:
+    dim_tags:
+    tissue_keys:

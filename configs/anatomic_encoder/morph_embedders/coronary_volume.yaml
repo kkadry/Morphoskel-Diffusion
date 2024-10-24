@@ -1,0 +1,14 @@
+defaults:
+  - morph_embedding_defaults@volume
+  - _self_
+
+volume:
+  _target_: src.conditioning.morph_embedders.VolEmbedder3D
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Scalar2VoxelEmbedder
+  channels: [1, 2]
+  logging:
+    attributes:
+      metric_name: "vol"
+      metric_dim: 1
+    dim_tags: ['n']

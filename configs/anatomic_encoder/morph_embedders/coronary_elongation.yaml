@@ -1,0 +1,13 @@
+defaults:
+  - morph_embedding_defaults@elongation
+  - _self_
+
+elongation:
+  _target_: src.conditioning.morph_embedders.ElongationEmbedder3D
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Scalar2VoxelEmbedder
+  channels: [2]
+  logging:
+    attributes:
+      metric_name: "elongation"
+      metric_dim: 1

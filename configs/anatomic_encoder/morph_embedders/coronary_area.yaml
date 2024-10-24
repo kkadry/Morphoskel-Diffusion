@@ -1,0 +1,17 @@
+defaults:
+  - morph_embedding_defaults@area
+  - _self_
+
+area:
+  _target_: src.conditioning.morph_embedders.CrossAreaEmbedder
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Seq2VoxelEmbedder
+  channels: [1, 2]
+  metric_min: [0.42, 0.0]
+  metric_max: [3.2, 3.13]
+  emb_axis: ${.tensor_embedder.emb_axis}
+  logging:
+    attributes:
+      metric_name: "area"
+      metric_dim: 2
+    dim_tags: ['n','emb_axis']

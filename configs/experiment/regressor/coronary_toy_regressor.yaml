@@ -1,0 +1,24 @@
+# @package _global_
+defaults:
+  - /anatomy/coronary_toy_defaults
+  - _self_
+
+_target_: src.models.lightning_models.RegressorEngine
+wandb:
+  project: Veslum_Regressor_Toy
+  mode: disabled #Options are none or disabled
+  group: debug
+
+training:
+  lr: 1e-5
+  gamma: 1
+  n_epochs: 50
+lightning: 
+  strategy: ddp_find_unused_parameters_true
+  precision: 16-mixed
+  limit_train_batches:  #How many batches per train epoch
+  limit_val_batches: 2 #How many batches per validation epoch
+  devices: [0]
+  enable_checkpointing: False
+regressor_checkpoint:
+  path: #Removing the checkpoint

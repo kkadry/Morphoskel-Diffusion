@@ -1,0 +1,26 @@
+defaults:
+  - skel_embedding_defaults@hard_skel
+  - _self_
+
+hard_skel:
+  _target_: src.conditioning.skel_embedders.HardSkelEmbedder
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Vertex2VoxelEmbedder
+    label_shape: [128,128,128]
+    blur_kernel_size: 3
+    sigma_skel: 1.0
+  channels: [1]
+  label_sigma: 1.0
+  label_shape: ${.tensor_embedder.label_shape}
+  emb_vox_shape: ${.tensor_embedder.emb_vox_shape}
+  blur_kernel_size: ${.tensor_embedder.blur_kernel_size}
+  skeletonize_params:
+    const: 10
+    scale: 1.5
+    pdrf_scale: 1e5
+    pdrf_exponent: 5
+  vertices_length: 500
+  logging:
+    attributes:
+      metric_name: "hard_skel"
+      metric_dim: 3

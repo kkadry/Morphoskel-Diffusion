@@ -1,0 +1,29 @@
+_target_: src.data.toy_datamodule.CoronaryToyDataModule
+voxel_grid_size: [1, 128, 128, 128]
+batch_size: 1
+config:
+  r_min: 5
+  r_max: 10
+  vessel_thickness_min: 5
+  vessel_thickness_max: 10
+  calcium_thickness_min: 0.2
+  calcium_thickness_max: 0.9
+  ang_min: 0
+  ang_max: 360
+  arc_min: 0
+  arc_max: 360
+  num_spline_points: 10
+  center_r_min: 0
+  center_r_max: 0
+  center_theta_min: 0
+  center_theta_max: 0
+  z_start: 0.0
+  z_len: 1
+config_bif_diff:
+  center_theta_max: 0.0
+  center_r_min: 0.5
+  center_r_max: 3
+  z_start: 0.2
+  z_len: 0.2
+num_bif_max: 3 
+

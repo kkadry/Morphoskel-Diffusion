@@ -1,0 +1,28 @@
+# @package _global_
+defaults:
+  - /anatomy/coronary_toy_defaults
+  - _self_
+
+_target_: src.models.lightning_models.DiffusionEngine
+wandb:
+  project: Diffusion_Toy_Coronary
+  mode: disabled  #Options are none or disabled
+  group: debug
+
+
+diffusion_checkpoint:
+  path: #Removing the checkpoint
+
+training: 
+  lr: 2.5e-5
+  gamma: 1
+  n_epochs: 50
+  log_thresh_epochs: 10 #How many epochs after which the metrics are logged
+  log_interval_epochs: 2 #How many intervals of epochs between each log
+lightning:
+  strategy: ddp_find_unused_parameters_true
+  precision: 16-mixed
+  limit_train_batches:  #How many batches per train epoch
+  limit_val_batches: 20 #How many batches per validation epoch
+  devices: 1
+  enable_checkpointing: False

@@ -1,0 +1,10 @@
+batch_size: 1
+k_steps: 20
+n_samples: 5
+sigma_min: 1e-2
+sigma_max: 80
+rho: 3
+psi: 
+noise_dim: [3,32,32,32] #Non batch dimensions of the sampled noise
+loader: val #options are train, val
+

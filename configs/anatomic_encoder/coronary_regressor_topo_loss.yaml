@@ -1,0 +1,6 @@
+# @package regressor
+defaults:
+- encoder_default
+
+- topo_embedders@topo_encoder.emb_models:
+  - coronary_interaction_loss

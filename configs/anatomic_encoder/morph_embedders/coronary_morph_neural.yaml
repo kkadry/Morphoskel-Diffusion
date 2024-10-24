@@ -1,0 +1,34 @@
+defaults:
+  - morph_embedding_defaults@neural_morph
+  - _self_
+
+neural_morph:
+  _target_: src.conditioning.morph_embedders.NeuralMorphEmbedder2D
+  tensor_embedder:
+    _target_: src.conditioning.tensor_embedders.Seq2VoxelEmbedder
+  channels: [1,2]
+  logging:
+    attributes:
+      metric_name: "neural_morph"
+      metric_dim: 2
+    dim_tags: ['n','emb_axis']
+  metric_min: 
+  metric_max:
+  emb_axis: ${.tensor_embedder.emb_axis}
+  emb_vox_shape: ${.tensor_embedder.emb_vox_shape}
+
+  lr: 1e-5
+  mlp_factor: 1 #Multiplication factor to determine mlp channels
+  input_shape: [64,64,64] #size of the latents
+  encoder_params:
+    spatial_dims: 3
+    in_channels: 4
+    out_channels: 4
+    num_res_blocks: [2, 2, 2]
+    num_channels: [64,128,192]
+    attention_levels: [False, False, False]
+    latent_channels: 64
+    norm_num_groups: 16
+
+  training:
+    is_trainable: True

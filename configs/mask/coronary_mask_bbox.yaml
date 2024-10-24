@@ -1,0 +1,6 @@
+defaults:
+  - coronary_mask_default
+_target_: src.conditioning.mask_embedders.BoundingBoxMask
+bbox_x: [0.,1.]
+bbox_y: [0.,1.]
+bbox_z: [0.,0.6]
